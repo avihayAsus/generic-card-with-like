@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header">
+        <title *ngIf="title">
+            {{title}}
+        </title>
+        {{header}}
+    </div>
+    <div class="card-body">
+        <img sizes="615px" *ngIf="path" srcset="{{path}}">
+        <summary *ngIf="summery">
+            {{summery}}
+        </summary>
+    </div>
+    <div *ngIf="footer" class="card-footer">
+        {{footer}}
+    </div>
+</div>  

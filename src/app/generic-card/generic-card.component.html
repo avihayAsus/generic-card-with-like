@@ -1,17 +1,25 @@
 <div class="card">
-    <div class="card-header">
-        <title *ngIf="title">
-            {{title}}
-        </title>
-        {{header}}
-    </div>
-    <div class="card-body">
-        <img sizes="615px" *ngIf="path" srcset="{{path}}">
-        <summary *ngIf="summery">
-            {{summery}}
-        </summary>
-    </div>
-    <div *ngIf="footer" class="card-footer">
-        {{footer}}
-    </div>
-</div>  
+	<header class="card-header">
+		<section *ngIf="objectImgPath" class="card-header-object">
+			<img [src]="objectImgPath">
+    </section>
+			{{header}}
+	</header>
+	<div class="card-body">
+		<img sizes="615px" *ngIf="path" srcset="{{path}}">
+		<section class="card-body-like" *ngIf="likePath">
+			<img (click) ="like()" class="card-like" [src]="cardLikePath">
+        </section>
+			<summary *ngIf="summery">
+				{{summery}}
+			</summary>
+			<section class="card-body-comment">
+				  <input type="text"   [(ngModel)]="comment" placeholder="Add comment...." > 
+        </section>
+	</div>
+	<div *ngIf="footer" class="card-footer">
+    <summary>
+		{{footer}}
+    </summary>
+	</div>
+</div>

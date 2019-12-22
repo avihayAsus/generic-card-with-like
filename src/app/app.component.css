@@ -1,0 +1,7 @@
+.card{
+  background-color: black!important
+}
+
+ :host ::ng-deep app-generic-card {
+       background-color:yellow;
+     }

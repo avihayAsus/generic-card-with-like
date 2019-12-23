@@ -12,12 +12,11 @@
     padding: 10px
 }
 
-.card-header img{
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  cursor: pointer;
-
+.card-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 .card:hover {
@@ -30,7 +29,6 @@
     border-bottom: 1px solid lightgray;
     display: flex;
     flex-direction: column;
-
 }
 
 .card-body {
@@ -38,9 +36,9 @@
     /* border-bottom: 1px solid lightgray; */
     display: flex;
     flex-direction: column;
-
 }
-.card-body summary{
+
+.card-body summary {
     font-family: "Times New Roman", Times, serif;
 }
 
@@ -49,21 +47,52 @@
     height: 100%;
     cursor: pointer;
 }
-.card-body-like img{
-  width: 30px;
-  height: 30px;
+
+.card-body-like img {
+    width: 30px;
+    height: 30px;
 }
 
 .card-body {
     width: 100%;
-}  
-.card-body-comment input{
-  border: transparent;
-  background-color: transparent;
-  margin: 5px;
-  width: 90%;
-} 
+}
 
-.card-footer{
-  /* margin: 10px; */
+.card-body-comment {
+    border-top: solid 1px black;
+    display: flex;
+    direction: row;
+    margin-top: 5px;
+    ;
+}
+
+.card-body-comment textarea {
+    border: transparent;
+    background-color: transparent;
+    margin: 5px;
+    width: 90%;
+    border: 0;
+    resize: none;
+}
+
+.card-body-comment button {
+    border: 0;
+    background-color: transparent;
+    color: #00bcc5;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    /* #9ddbde; disable */
+}
+
+.card-body-comment>textarea,
+button:focus {
+    border: 0;
+    outline: 0px;
+    outline-color: white!important;
+    outline-style: none!important;
+    outline-width: 0px!important;
+}
+
+.card-footer {
+    /* margin: 10px; */
 }

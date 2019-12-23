@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
-  selector: "app-generic-card",
-  templateUrl: "./generic-card.component.html",
-  styleUrls: ["./generic-card.component.css"]
+  selector: 'app-generic-card',
+  templateUrl: './generic-card.component.html',
+  styleUrls: ['./generic-card.component.css']
 })
 export class GenericCardComponent implements OnInit {
   @Input() header: string;
@@ -11,29 +12,34 @@ export class GenericCardComponent implements OnInit {
   @Input() summery: string;
   @Input() footer: string;
   @Input() title: string;
-  @Input() isLike: boolean = false;
+  @Input() isLike = false;
   @Input() objectId: any;
-  @Input() objectImgPath: string = 'https://www.fcbarcelonanoticias.com/uploads/s1/11/71/55/9/leo-messi-barcelona-top.jpeg';
+  @Input() objectImgPath = 'https://www.fcbarcelonanoticias.com/uploads/s1/11/71/55/9/leo-messi-barcelona-top.jpeg';
+  @Input() numberOflikes: number;
   cardLikePath: string;
-  comment: string = "";
-  @Input() likePath: string =
-    "https://www.pinclipart.com/picdir/big/10-104069_download-cliparts-and-objects-in-full-resolution-please.png";
+  comment = '';
+  @Input() likePath =
+    'https://www.pinclipart.com/picdir/big/10-104069_download-cliparts-and-objects-in-full-resolution-please.png';
 
-  @Input() unlikePath: string =
-    "https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png";
+  @Input() unlikePath =
+    'https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png';
 
-  // likeSubject:  Subject;
+  likeSubject: Subject<boolean>;
+  coommentSubject: Subject<[string, string]>;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
+    this.likeSubject = new Subject<boolean>();
+    this.coommentSubject = new Subject<[string, string]>();
     this.cardLikePath = this.getLikePath();
   }
 
   like() {
     this.isLike = !this.isLike;
     this.cardLikePath = this.getLikePath();
-    // Todo nex to like subject
+    this.numberOflikes = this.isLike ? this.numberOflikes + 1 : this.numberOflikes - 1;
+    this.likeSubject.next(this.isLike);
   }
 
   getLikePath() {
@@ -41,6 +47,6 @@ export class GenericCardComponent implements OnInit {
   }
 
   addComment() {
-    // toDo next to subject
+    this.coommentSubject.next([this.objectId as string, this.comment]);
   }
 }
